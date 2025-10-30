@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>abdiel-vega</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+    <button class="menu-button" aria-label="Toggle menu">
+        <span class="menu-icon"></span>
+    </button>
+
+    <nav class="sidebar" aria-label="sidebar nav">
+        <ul class="nav-links">
+            <li><a href="#introduction">introduction</a></li>
+            <li><a href="#projects">projects</a></li>
+            <li><a href="#experience">experience</a></li>
+            <li><a href="#skills">skills</a></li>
+            <li><a href="#education">education</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Profile Section -->
+        <section id="introduction">
+            <h1 class="name">Abdiel Vega</h1>
+            <p class="tagline">cs student • developer • cloud engineer</p>
+            
+            <div class="about">
+                <p>Hello! I'm a third-year Computer Science student at Inter-American University of Puerto Rico, transitioning into cloud engineering with a focus on AWS and containerization.</p>
+                <p>Currently building projects using AWS and Docker while learning along the way.</p>
+                <em class="side-message">thx for visiting :)</em>
+            </div>
+
+            <div class="social-links">
+                <a href="https://linkedin.com/in/abdiel-vega2004" target="_blank" class="social-link">
+                    <img src="assets/linkedin.svg" alt="LinkedIn" class="social-icon">
+                    LinkedIn
+                </a>
+                <a href="https://github.com/abdiel-vega" class="social-link">
+                    <img src="assets/github.svg" alt="GitHub" class="social-icon">
+                    GitHub
+                </a>
+                <a href="mailto:abdiel.vega@outlook.com" class="social-link">
+                    <img src="assets/mail.svg" alt="Email" class="social-icon">
+                    abdiel.vega@outlook.com
+                </a>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="section-title">Projects</h2>
+
+            <div class="project-item">
+                <h3 class="project-title">iCooked - Food Recipe Website</h3>
+                <p class="project-description"><em class="description-em">Complete food recipe web application</em> leveraging from the Spoonacular API. It features secure user authentication, database integration for recipe storage, recipe search and filtering, shopping list generator, and interactive recipe viewing.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">CSS</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Next.js</span>
+                    <span class="tech-tag">Supabase</span>
+                    <span class="tech-tag">API</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://icooked.vercel.app/" target="_blank" class="project-link">→ Live Demo</a>
+                    <a href="https://github.com/abdiel-vega/i_Cooked" target="_blank" class="project-link">→ GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <h3 class="project-title">Portfolio Website</h3>
+                <p class="project-description"><em class="description-em">You're looking at it!</em> This is my portfolio website hosted on AWS using containerization with Docker. Demonstrating cloud infrastructure deployment, container orchestration, and web development basic skills.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">AWS</span>
+                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Linux</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/abdiel-vega" target="_blank" class="project-link">→ Documentation</a>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2 class="section-title">Experience</h2>
+
+            <em class="description-em">Unfortunately I currently don't have any tech related job experience, yet!</em>
+            
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div>
+                        <h3>Aroma Coffee Bar</h3>
+                        <p class="exp-role">Solo Barista</p>
+                    </div>
+                    <div class="exp-meta">
+                        <p class="exp-location">Puerto Rico</p>
+                        <p class="exp-date">January 2025 - Present</p>
+                    </div>
+                </div>
+                <p class="exp-description">Manage mobile coffee bar operations independently on various mall popups and private events.</p>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div>
+                        <h3>Performa - HCOA Fitness</h3>
+                        <p class="exp-role">Sales Staff</p>
+                    </div>
+                    <div class="exp-meta">
+                        <p class="exp-location">San Juan, Puerto Rico</p>
+                        <p class="exp-date">May 2024 - Oct 2024</p>
+                    </div>
+                </div>
+                <p class="exp-description">Membership sales position at a top tier wellness center. Common day included client assessment, cold outreach, managing and updating CRM system, and gym maintenance.</p>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div>
+                        <h3>Starbucks</h3>
+                        <p class="exp-role">Barista</p>
+                    </div>
+                    <div class="exp-meta">
+                        <p class="exp-location">Guaynabo, Puerto Rico</p>
+                        <p class="exp-date">Jul 2023 - Dec 2023</p>
+                    </div>
+                </div>
+                <p class="exp-description">Average retail environment in a high volume Starbucks location. Common day included customer service, beverage preparation, and store maintenance.</p>
+            </div>
+
+            <p class="section-note"><em class="description-em">If you're hiring!</em> Currently seeking opportunities in cloud related entry level or internship roles. You know where my <a class="more-link" href="#introduction">contacts</a> are ;)</p>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-title">Skills</h2>
+
+            <div class="skills-group">
+                <p class="skill-category">Amazon Web Services</p>
+                <span class="tech-tag">EC2</span>
+                <span class="tech-tag">ECR</span>
+                <span class="tech-tag">S3</span>
+                <span class="tech-tag">VPC</span>
+                <span class="tech-tag">IAM</span>
+                <span class="tech-tag">Lambda</span>
+            </div>
+            
+            <div class="skills-group">
+                <p class="skill-category">Languages</p>
+                <span class="tech-tag">HTML</span>
+                <span class="tech-tag">CSS</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Python</span>
+            </div>
+
+            <div class="skills-group">
+                <p class="skill-category">Development</p>
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Next.js</span>
+                <span class="tech-tag">TailwindCSS</span>
+                <span class="tech-tag">Supabase</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">MySQL</span>
+            </div>
+
+            <div class="skills-group">
+                <p class="skill-category">Tools</p>
+                <span class="tech-tag">Git</span>
+                <span class="tech-tag">VS Code</span>
+                <span class="tech-tag">Linux</span>
+                <span class="tech-tag">VirtualBox</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">Obsidian</span>
+            </div>
+
+            <div class="skills-group">
+                <p class="skill-category">Knowledge Foundation</p>
+                <span class="tech-tag">Network Fundamentals</span>
+                <span class="tech-tag">Network Cloud Fundamentals</span>
+                <span class="tech-tag">Security Best Practices</span>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="education-item">
+                <h3>Bachelor's Degree in Computer Science</h3>
+                <p>Inter-American University of Puerto Rico | Metro Campus</p>
+                <p class="edu-date">August 2023 - May 2027</p>
+            </div>
+
+            <h3 class="subsection-title">Certifications</h3>
+
+            <div class="cert-list">
+                <div class="cert-item">
+                    <p class="cert-name">AWS Certified Cloud Practitioner</p>
+                    <p class="cert-status">In Progress - Expected November 2025</p>
+                </div>
+                <div class="cert-item">
+                    <p class="cert-name">AWS Certified Solutions Architect - Associate</p>
+                    <p class="cert-status">Planned - After Cloud Practitioner</p>
+                </div>
+                <div class="cert-item">
+                    <p class="cert-name">CompTIA Security+</p>
+                    <p class="cert-status">Planned</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-note">
+                <p class="tooltip" data-tooltip="jk">©2025 notaquacc</p>
+                <p>docker? i barely know her</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

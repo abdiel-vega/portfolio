@@ -1,0 +1,672 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #2D232E;
+    --text-primary: #E0DDCF;
+    --text-secondary: #8B8680;
+    --accent: #FC9173;
+    --accent-hover: #fd7a56;
+    --line-color: rgba(224, 221, 207, 0.2);
+    --section-break: rgba(224, 221, 207, 0.4);
+    --description-em: #cac3ba;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.7;
+    overflow-x: hidden;
+    position: relative;
+}
+
+canvas {
+  display: block;
+} /* ---- particles.js container ---- */
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg-primary);
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'DM Serif Display', serif;
+}
+
+/* Navigation - sidebar */
+nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 180px;
+    backdrop-filter: blur(3px);
+    padding: 2rem 0;
+    z-index: 1000;
+    border-right: 2px solid var(--line-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: flex-start;
+}
+
+nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.25s;
+    display: list-item;
+    text-align: left;
+    width: 100%;
+    padding: 0.25rem 0;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+/* Mobile: restore top nav behavior */
+@media (max-width: 768px) {
+    .name {
+        font-size: 2.5rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .subsection-title {
+        font-size: 1.2rem;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        padding: 1.2rem 0;
+        border-right: none;
+        border-bottom: 1px solid var(--line-color);
+        backdrop-filter: blur(10px);
+    }
+
+    nav ul {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    body {
+        padding-left: 0;
+    }
+}
+
+/* Mobile Menu Button */
+.menu-button {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    background: var(--bg-primary);
+    border: none;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+}
+
+.menu-icon {
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--text-primary);
+    margin: auto;
+    transition: all 0.3s;
+}
+
+.menu-icon::before,
+.menu-icon::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: var(--text-primary);
+    transition: all 0.3s;
+}
+
+.menu-icon::before {
+    transform: translateY(-6px);
+}
+
+.menu-icon::after {
+    transform: translateY(6px);
+}
+
+.menu-button.active .menu-icon {
+    background: transparent;
+}
+
+.menu-button.active .menu-icon::before {
+    transform: rotate(45deg);
+}
+
+.menu-button.active .menu-icon::after {
+    transform: rotate(-45deg);
+}
+
+/* Update Mobile Navigation Styles */
+@media (max-width: 768px) {
+    .menu-button {
+        display: block;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        padding: 80px 2rem 2rem;
+        background: rgba(45, 35, 46, 0.95);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+        border: none;
+        visibility: hidden; 
+        opacity: 0; 
+    }
+
+    nav.active {
+        right: 0;
+        visibility: visible; 
+        opacity: 1; 
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    nav a {
+        font-size: 1.1rem;
+        opacity: 0;
+        transform: translateY(8px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    nav.active a {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Container */
+.container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Sections */
+section {
+    padding: 4rem 0; 
+    min-height: auto;
+    border-top: 2px solid var(--section-break);
+}
+
+section:first-of-type {
+    border-top: none; 
+}
+
+.description-em {
+    font-style: italic;
+    color: var(--description-em);
+}
+
+#introduction {
+    padding-top: 10rem;  
+}
+
+/* Profile Section */
+.name {
+    font-size: 3.5rem;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.tagline {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+}
+
+.about {
+    margin-bottom: 2rem;
+}
+
+.about p {
+    margin-bottom: 1.2rem;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    line-height: 1.8;
+}
+
+.side-message {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.social-link:hover {
+    color: var(--accent);
+}
+
+.social-icon {
+    width: 20px;
+    height: 20px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.social-link:hover .social-icon {
+    opacity: 1;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.subsection-title {
+    font-family: JetBrains Mono, monospace;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* Experience Section */
+.experience-item {
+    margin: 2rem 0;
+}
+
+.exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 2rem;
+    margin-bottom: 0.8rem;
+}
+
+.exp-header h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.exp-role {
+    font-size: 0.9rem;
+    color: var(--description-em);
+}
+
+.exp-meta {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.exp-location {
+    font-size: 0.85rem;
+    color: var(--description-em);
+}
+
+.exp-date {
+    font-size: 0.85rem;
+    color: var(--description-em);
+}
+
+.exp-description {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.section-note {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Projects Section */
+.project-item {
+    margin-bottom: 3rem;
+}
+.project-item:last-child {
+    margin-bottom: 0;
+}
+
+.project-title {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+.project-description {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.tech-tag {
+    background: rgba(252, 145, 115, 0.1);
+    color: var(--accent);
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+}
+
+.project-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.project-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s;
+}
+
+.project-link:hover {
+    color: var(--accent);
+}
+
+.more-link {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: var(--accent);
+}
+
+.more-link a {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.more-link a:hover {
+    color: var(--accent-hover);
+}
+
+/* Skills Section */
+.skills-group {
+    margin-bottom: 1.5rem;
+}
+
+.skill-category {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    line-height: 1.7;
+    margin-bottom: 0.4rem;
+}
+
+/* Education Section */
+.education-item {
+    margin-bottom: 2.5rem;
+}
+
+.education-item h3 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.education-item p {
+    font-size: 0.9rem;
+    color: var(--description-em);
+    margin-bottom: 0.3rem;
+}
+
+.edu-date {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.cert-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.cert-item {
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--line-color);
+}
+
+.cert-item:last-child {
+    border-bottom: 1px solid var(--line-color);
+}
+
+.cert-name {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
+}
+
+.cert-status {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Footer */
+footer {
+    padding: 2rem 0;
+    text-align: left;
+}
+
+footer p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    transition: color 0.3s;
+}
+
+footer p:hover {
+    color: var(--description-em);
+}
+
+.footer-note {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    font-style: italic;
+    transition: color 0.3s;
+}
+
+.footer-note a {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.footer-note a:hover {
+    color: var(--accent-hover);
+}
+
+/* Tooltip */
+.tooltip {
+    position: relative;
+    cursor: help;
+}
+
+.tooltip:before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    color: var(--description-em);
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.tooltip:hover:before {
+    opacity: 1;
+    visibility: visible;
+    bottom: 120%;
+}
+
+/* Smooth animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* removed the global automatic section animation so scroll-driven classes control fade-in/out */
+
+/* New scroll-driven fade classes */
+.scroll-fade {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s cubic-bezier(.2,.9,.2,1), transform 1s cubic-bezier(.2,.9,.2,1);
+    will-change: opacity, transform;
+    pointer-events: auto; /* preserve interactions when visible */
+}
+
+.scroll-fade.in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-fade.out {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .name {
+        font-size: 2.5rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    nav ul {
+        gap: 1.5rem;
+        font-size: 0.8rem;
+    }
+
+    .exp-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .exp-meta {
+        text-align: left;
+    }
+
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    #introduction {
+        padding-top: 8rem; 
+    }
+}
+
+/* Hide native scrollbars but preserve scrolling (wheel, touch, keyboard) */
+html, body {
+    /* Firefox */
+    scrollbar-width: none;
+    /* IE 10+ */
+    -ms-overflow-style: none;
+}
+
+/* WebKit (Chrome, Safari, Edge Chromium) */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
+}
+
+/* Ensure any scrollable element that you still want hidden can inherit this */
+*:not(textarea):not(input) {
+    -ms-overflow-style: none; /* IE 10+ */
+}
+*:not(textarea):not(input)::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
