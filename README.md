@@ -4,7 +4,7 @@ A containerized portfolio website deployed on AWS using ECS Fargate, demonstrati
 
 **Live Site:** [abdiel-vega.dev](https://abdiel-vega.dev/)
 
-![website image](portfolio-website-image.png)
+![website image](/docs/assets/portfolio-website-image.png)
 
 ## Project Overview
 
