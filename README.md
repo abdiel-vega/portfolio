@@ -4,6 +4,8 @@ A containerized portfolio website deployed on AWS using ECS Fargate, demonstrati
 
 **Live Site:** [abdiel-vega.dev](https://abdiel-vega.dev/)
 
+![[portfolio-website-image.png]]
+
 ## Project Overview
 
 This project showcases a complete cloud deployment pipeline using Docker containerization and AWS services. The website runs on ECS Fargate with automated deployments from ECR, behind Cloudflare's CDN for SSL/TLS termination and DDoS protection.
