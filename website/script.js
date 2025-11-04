@@ -187,9 +187,9 @@ window.addEventListener('scroll', () => {
 });
 
 // Console easter egg
-console.log('%cmy secret: certified doomscroller', 'font-size: 20px; font-weight: bold; color: #FC9173;');
-console.log('%cbuilt with HTML, CSS, and JavaScript', 'font-size: 14px; color: #E0DDCF;');
-console.log('%chosted on aws with docker 🐳', 'font-size: 12px; color: #8B8680;');
+console.log('%chello! inspecting my site?', 'font-size: 20px; font-weight: bold; color: #FC9173;');
+console.log('%cbuilt with html, css, javascript\nhosted on aws with docker and nginx', 'font-size: 14px; color: #E0DDCF;');
+console.log('%calso looking for professional doomscroller jobs\njk', 'font-size: 12px; color: #8B8680;');
 
 // Mobile menu functionality
 const menuButton = document.querySelector('.menu-button');
