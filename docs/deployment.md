@@ -256,7 +256,7 @@ aws ec2 describe-network-interfaces \
 ```
 Type: A
 Name: abdiel-vega.dev
-Content: 54.225.3.16
+Content: 100.24.62.202
 Proxy: Enabled (orange cloud)
 TTL: Auto
 ```
@@ -274,8 +274,7 @@ TTL: Auto
 ### Quick Update Process
 
 ```bash
-# 1. Make changes to your code
-vim index.html
+# 1. Make changes to code
 
 # 2. Rebuild Docker image
 docker build -t portfolio-website .
@@ -406,7 +405,7 @@ aws ecs list-tasks --cluster portfolio-cluster
 aws ec2 describe-security-groups --group-ids SG-ID
 
 # Test direct IP access
-curl http://54.225.3.16
+curl http://100.24.62.202
 
 # Check Cloudflare DNS
 dig abdiel-vega.dev
