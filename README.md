@@ -12,10 +12,10 @@ This project showcases a complete cloud deployment pipeline using Docker contain
 
 ## Documentation
 
-- **[Architecture Overview](https://claude.ai/chat/ARCHITECTURE.md)** - AWS infrastructure design and service interactions
-- **[Network Configuration](https://claude.ai/chat/NETWORK.md)** - VPC, subnets, security groups, and routing details
-- **[Deployment Guide](https://claude.ai/chat/DEPLOYMENT.md)** - Step-by-step deployment and update procedures
-- **[DNS & SSL Setup](https://claude.ai/chat/DNS-SSL.md)** - Domain configuration with Porkbun and Cloudflare
+- **[Architecture Overview](/docs/architecture.md)** - AWS infrastructure design and service interactions
+- **[Network Configuration](/docs/network.md)** - VPC, subnets, security groups, and routing details
+- **[Deployment Guide](/docs/deployment.md)** - Step-by-step deployment and update procedures
+- **[DNS & SSL Setup](/docs/dns-ssl.md)** - Domain configuration with Porkbun and Cloudflare
 
 ## Tech Stack
 
