@@ -133,7 +133,7 @@ Destination         Target
 
 ```
 Type    Name                Content            Proxy
-A       abdiel-vega.dev     100.24.62.202      Proxied
+A       abdiel-vega.dev     3.84.209.91        Proxied
 CNAME   *                   pixie.porkbun.com  Proxied
 CNAME   www                 pixie.porkbun.com  Proxied
 ```
@@ -161,7 +161,7 @@ CNAME   www                 pixie.porkbun.com  Proxied
                 ↓
 4. User connects to Cloudflare edge server (HTTPS)
                 ↓
-5. Cloudflare forwards to AWS Public IP: 100.24.62.202 (HTTP)
+5. Cloudflare forwards to AWS Public IP: 3.84.209.91 (HTTP)
                 ↓
 6. Internet Gateway routes to VPC
                 ↓

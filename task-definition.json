@@ -8,7 +8,7 @@
   "containerDefinitions": [
     {
       "name": "portfolio-container",
-      "image": "787169320183.dkr.ecr.us-east-1.amazonaws.com/portfolio-website:v1.0",
+      "image": "787169320183.dkr.ecr.us-east-1.amazonaws.com/portfolio-website:latest",
       "portMappings": [
         {
           "containerPort": 80,
