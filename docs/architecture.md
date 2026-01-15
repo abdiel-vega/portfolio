@@ -4,151 +4,80 @@
 
 ![[portfolio-website-diagram.svg]]
 
-## AWS Services Breakdown
+## Google Cloud Services Breakdown
 
-### 1. Amazon ECS (Elastic Container Service)
+### 1. Cloud Run (Serverless Container Platform)
 
-**Purpose:** Container orchestration platform
+**Purpose:** Hosting the application container
 
 **Configuration:**
 
-- **Cluster:** portfolio-cluster
-- **Service:** portfolio-service (1 running task)
-- **Launch Type:** Fargate (serverless)
-- **Task Definition:** portfolio-task-#
-- **Resources:** 0.25 vCPU, 0.5GB RAM
-- **Platform:** Linux/x86_64
+- **Service:** `portfolio`
+- **Region:** `us-west1`
+- **Memory:** 256 MiB
+- **CPU:** 1 vCPU
+- **Concurrency:** Default (80)
+- **Execution Environment:** First Generation
+- **Ingress:** All (Publicly accessible)
+- **Port:** 8080
 
-**Why ECS Fargate?**
+**Why Cloud Run?**
 
-- No server management required
-- Pay only for running tasks
-- Automatic scaling capability (currently 1 task)
-- Seamless integration with ECR
+- Fully managed serverless platform
+- Scales to zero (pay only when running)
+- auto-scaling (Min: 0, Max: 3 instances)
+- Integrated HTTPS and simplified networking
 
-### 2. Amazon ECR (Elastic Container Registry)
+### 2. Artifact Registry
 
 **Purpose:** Private Docker image repository
 
 **Configuration:**
 
-- **Repository:** portfolio-website
-- **Encryption:** AES-256
-- **Tag Immutability:** Mutable
-- **Created:** October 27, 2025
+- **Location:** `us-west1`
+- **Repository:** `cloud-run-source-deploy`
+- **Image URL:** `us-west1-docker.pkg.dev/portfolio-website-484321/cloud-run-source-deploy/portfolio/portfolio`
 
-**Workflow:**
+### 3. Cloud Build
 
-```bash
-# Build → Tag → Push → Deploy
-docker build -t portfolio-website .
-
-docker tag portfolio-website:latest <ACCOUNT_ID>.dkr.ecr.us-east-1.amazonaws.com/portfolio-website:latest
-
-docker push <ACCOUNT_ID>.dkr.ecr.us-east-1.amazonaws.com/portfolio-website:latest
-# ECS pulls and deploys automatically
-```
-
-### 3. Amazon VPC (Virtual Private Cloud)
-
-**Purpose:** Network isolation and security
+**Purpose:** Continuous Integration and Deployment (CI/CD)
 
 **Configuration:**
 
-- **VPC Name:** portfolio-vpc
-- **CIDR Block:** 172.31.0.0/16
-- **DNS Resolution:** Enabled
-- **DNS Hostnames:** Enabled
-
-**Design Choice:** Using default VPC for simplicity. Production environments and future projects could use custom VPC with multiple availability zones.
-
-### 4. IAM (Identity and Access Management)
-
-**Purpose:** Secure access control
-
-**Key Roles:**
-
-- **ecsTaskExecutionRole:** Allows ECS to pull images from ECR and write logs
-- **AWSServiceRoleForECS:** Service-linked role for ECS cluster management
+- **Trigger:** Connects to GitHub repository
+- **Source:** `abdiel-vega/portfolio` (branch: `main`)
+- **Action:** automatically builds new image and deploys to Cloud Run on valid push
 
 ## Network Architecture
 
-### Subnet Configuration
+**Overview:**
+The application is hosted on Google Cloud Run which handles all infrastructure networking, load balancing, and SSL termination automatically.
 
-**Public Subnet: portfolio-public-subnet**
+- **Service URL:** `https://portfolio-466431697349.us-west1.run.app`
+- **Custom Domain:** `abdiel-vega.dev`
 
-- **CIDR:** 172.31.1.0/24
-- **Availability Zone:** us-east-1d
-- **Auto-assign Public IP:** Yes
-- **Internet Gateway:** igw-0f5f8c1dc39b659cf
+### Security
 
-**Why Public Subnet?**
-
-- Direct internet access without NAT Gateway costs
-- Simple routing for single-task deployment
-- Cloudflare proxy provides additional security layer
-
-### Security Group: portfolio-sg
-
-**Inbound Rules:**
-
-```
-Type    Protocol    Port    Source
-HTTP    TCP         80      0.0.0.0/0
-HTTPS   TCP         443     0.0.0.0/0
-```
-
-**Outbound Rules:**
-
-```
-All traffic allowed (for ECR pulls and health checks)
-```
-
-**Security Note:** Origin IP is hidden by Cloudflare proxy. All traffic routes through Cloudflare's network before reaching AWS.
-
-### Route Table:
-
-```
-Destination         Target
-172.31.0.0/16      local
-0.0.0.0/0          igw-0f5f8c1dc39b659cf
-```
-
-**Translation:**
-
-- Local traffic stays within VPC
-- All other traffic routes to Internet Gateway
+- **Ingress Control:** Set to "All" to allow public internet traffic.
+- **Authentication:** Publicly accessible (unauthenticated).
+- **SSL/TLS:** Managed automatically by Google Cloud for the `.run.app` domain and custom domain mappings.
 
 ## DNS & CDN Architecture
 
 ### Porkbun (Domain Registrar)
 
-- **Domain:** abdiel-vega.dev
+- **Domain:** `abdiel-vega.dev`
 - **Nameservers:** Cloudflare NS (cris.ns.cloudflare.com, jean.ns.cloudflare.com)
-- **WHOIS Privacy:** Enabled
 
 ### Cloudflare Configuration
 
 **DNS Records:**
 
-```
-Type    Name                Content            Proxy
-A       abdiel-vega.dev     3.84.209.91        Proxied
-CNAME   *                   pixie.porkbun.com  Proxied
-CNAME   www                 pixie.porkbun.com  Proxied
-```
+- CNAME or A records pointing to Google Cloud Run (handled via Cloudflare Proxy).
 
-**SSL/TLS Mode:** Flexible
+**SSL/TLS Mode:**
 
-- Browser → Cloudflare: HTTPS (encrypted)
-- Cloudflare → AWS: HTTP (unencrypted)
-
-**Why Flexible SSL?**
-
-- No need for AWS certificate management
-- Cloudflare handles all SSL/TLS termination
-- Sufficient security for public portfolio site
-- Reduces AWS costs (no Application Load Balancer needed)
+- **Flexible/Full:** Traffic between Cloudflare and Google Cloud Run is encrypted (HTTPS).
 
 ## Traffic Flow Diagram
 
@@ -157,85 +86,53 @@ CNAME   www                 pixie.porkbun.com  Proxied
                 ↓
 2. DNS query to Cloudflare nameservers
                 ↓
-3. Cloudflare resolves to proxied IP (not AWS IP)
+3. Cloudflare resolves to proxied IP
                 ↓
 4. User connects to Cloudflare edge server (HTTPS)
                 ↓
-5. Cloudflare forwards to AWS Public IP: 3.84.209.91 (HTTP)
+5. Cloudflare forwards request to Google Cloud Run (HTTPS)
+   URL: https://portfolio-[...].us-west1.run.app
                 ↓
-6. Internet Gateway routes to VPC
+6. Google Cloud Run spins up container (if scale=0)
                 ↓
-7. Security Group validates HTTP/HTTPS ports
+7. Container serves content on port 8080
                 ↓
-8. Traffic reaches ECS Task at 172.31.1.57:80
-                ↓
-9. Nginx container serves static content
-                ↓
-10. Response returns through same path
+8. Response returns through same path
 ```
 
 ## Deployment Architecture
 
-### Container Lifecycle
+### Continuous Deployment Pipeline
 
 ```
 [Developer Machine]
-       ↓ docker build
-[Local Docker Image]
-       ↓ docker tag
-[Tagged Image]
-       ↓ docker push
-[ECR Repository]
-       ↓ ECS Service Update
-[ECS Task Definition v5]
-       ↓ ECS pulls image
-[Running Container in Fargate]
+       ↓ git push origin main
+[GitHub Repository]
+       ↓ Webhook trigger
+[Cloud Build]
+       ↓ 1. Builds Docker Image
+       ↓ 2. Pushes to Artifact Registry
+       ↓ 3. Deploys new revision to Cloud Run
+[Cloud Run Service]
+       ↓
+[New Revision Live]
 ```
-
-### Zero-Downtime Deployment
-
-When updating the service:
-
-1. New task starts with updated image
-2. Health checks verify new task is healthy
-3. Old task drains connections
-4. Old task terminates
-5. Service reports as "Stable"
 
 ## Scalability Considerations
 
-**Current Setup (Single Task):**
+**Current Setup:**
 
-- Handles low-to-medium traffic
-- No load balancer overhead
-- Cloudflare caching reduces origin requests
-
-**Future Scaling Path:**
-
-1. Increase task count in ECS service (horizontal scaling)
-2. Add Application Load Balancer for traffic distribution
-3. Enable ECS Service Auto Scaling based on CPU/memory
-4. Implement multi-AZ deployment for high availability
-5. Add CloudFront for additional caching (if needed beyond Cloudflare)
+- **Auto-scaling:** Configured to scale between 0 and 3 instances.
+- **Cold Starts:** Simple container (Nginx + Static files) starts very quickly.
+- **Region:** Single region (`us-west1`).
 
 ## Cost Breakdown
 
-**Monthly Estimates:**
+**Estimates:**
 
-- **ECS Fargate:** ~$10-12 (0.25 vCPU, 0.5GB RAM, 730 hours/month)
-- **ECR Storage:** ~$1 (1-2 images stored)
-- **Data Transfer:** ~$2-5 (depends on traffic)
-- **VPC:** $0 (using default VPC with public subnet)
+- **Cloud Run:** Free tier covers 2 million requests/month and 180,000 vCPU-seconds/month. Likely **$0.00/month** for low traffic.
+- **Artifact Registry:** Storage costs (likely cents per month for small images).
+- **Cloud Build:** 120 free build-minutes/day. Likely **$0.00/month**.
+- **Data Transfer:** Standard egress rates apply after free tier.
 
-**Total:** ~$15-20/month
-
-**Cost Savings:**
-
-- No NAT Gateway ($32+/month saved)
-- No Application Load Balancer ($16+/month saved)
-- Cloudflare free tier for DNS and SSL
-- Single availability zone deployment
-
----
-
-> *This architecture balances cost, simplicity, and functionality for my portfolio website.*
+**Total:** Likely **<$1.00/month** for portfolio scale usage.
