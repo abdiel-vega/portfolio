@@ -1,6 +1,6 @@
 # Portfolio Website - Google Cloud Deployment
 
-A containerized portfolio website deployed on Google Cloud Platform using Cloud Run, demonstrating serverless container deployment, CI/CD automation, and modern web hosting.
+A containerized portfolio website deployed on Google Cloud Platform using Cloud Run, demonstrating serverless container deployment, CI/CD automation, and cloud web hosting.
 
 **Live Site:** [abdiel-vega.dev](https://abdiel-vega.dev/)
 
