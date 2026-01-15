@@ -1,6 +1,6 @@
-# Portfolio Website - AWS Deployment
+# Portfolio Website - Google Cloud Deployment
 
-A containerized portfolio website deployed on AWS using ECS Fargate, demonstrating cloud infrastructure, container orchestration, and secure web deployment.
+A containerized portfolio website deployed on Google Cloud Platform using Cloud Run, demonstrating serverless container deployment, CI/CD automation, and modern web hosting.
 
 **Live Site:** [abdiel-vega.dev](https://abdiel-vega.dev/)
 
@@ -8,14 +8,14 @@ A containerized portfolio website deployed on AWS using ECS Fargate, demonstrati
 
 ## Project Overview
 
-This project showcases a complete cloud deployment pipeline using Docker containerization and AWS services. The website runs on ECS Fargate with automated deployments from ECR, behind Cloudflare's CDN for SSL/TLS termination and DDoS protection.
+This project showcases a complete cloud deployment pipeline using Docker containerization and Google Cloud services. The website runs on Cloud Run (serverless) with automated CI/CD deployments from GitHub via Cloud Build and Artifact Registry. It utilizes Cloudflare for DNS management and edge caching.
 
 ## Documentation
 
-- **[Architecture Overview](/docs/architecture.md)** - AWS infrastructure design and service interactions
-- **[Network Configuration](/docs/network.md)** - VPC, subnets, security groups, and routing details
-- **[Deployment Guide](/docs/deployment.md)** - Step-by-step deployment and update procedures
-- **[DNS & SSL Setup](/docs/dns-ssl.md)** - Domain configuration with Porkbun and Cloudflare
+- **[Architecture Overview](/docs/architecture.md)** - Google Cloud infrastructure design and service interactions
+- **[Network Configuration](/docs/network.md)** - Serverless networking and security details
+- **[Deployment Guide](/docs/deployment.md)** - CI/CD pipeline and manual deployment procedures
+- **[DNS & SSL Setup](/docs/dns-ssl.md)** - Domain configuration with Porkbun, Cloudflare, and Cloud Run
 
 ## Tech Stack
 
@@ -26,39 +26,39 @@ This project showcases a complete cloud deployment pipeline using Docker contain
 
 **Infrastructure:**
 
-- **AWS ECS (Fargate)** - Container orchestration
-- **AWS ECR** - Private Docker image registry
-- **AWS VPC** - Network isolation (172.31.0.0/16)
+- **Google Cloud Run** - Serverless container hosting
+- **Artifact Registry** - Private Docker image repository
+- **Cloud Build** - CI/CD automation
 - **Porkbun** - Domain registrar
-- **Cloudflare** - DNS management and SSL/TLS
+- **Cloudflare** - DNS management (Proxied)
 
 **Tools:**
 
 - Docker for containerization
-- AWS CLI for deployment
-- VS Code for frontend
+- Google Cloud CLI (`gcloud`)
+- VS Code for development
 
 ## Quick Stats
 
 - **Container:** Custom nginx-based image (~15MB)
-- **Compute:** 0.25 vCPU, 0.5GB RAM (Fargate)
-- **Network:** Public subnet with auto-assigned IP
-- **SSL:** Cloudflare Flexible encryption
-- **Availability:** Single task, single AZ (cost-optimized)
+- **Compute:** 1 vCPU, 256 MiB RAM (Scale-to-Zero)
+- **Region:** `us-west1`
+- **SSL:** Managed by Google Cloud & Cloudflare
+- **Scaling:** Automatic (Min: 0, Max: 3)
 
 ## Key Features
 
-- Fully containerized deployment
-- Zero-downtime updates via ECS
-- HTTPS encryption via Cloudflare
-- Proxied DNS for security
-- Minimal infrastructure footprint
+- **Serverless Architecture:** No server management required
+- **Automated CI/CD:** Changes to `main` branch auto-deploy via Cloud Build
+- **Cost Efficient:** Scales to zero when unused (Free Tier eligible)
+- **Global CDNs:** Cloudflare + Google's global network
+- **Secure by Default:** HTTPS/TLS 1.3 enforced
 
 ## Repository Structure
 
 ```
 portfolio website/           # root
-├── docs/                    # documentaiton
+├── docs/                    # documentation
 │   ├── architecture.md      
 │   ├── deployment.md        
 │   ├── dns-ssl.md           
@@ -69,8 +69,7 @@ portfolio website/           # root
 │   ├── script.js            # javascript
 │   └── assets/              # svg icons
 ├── Dockerfile               # container definition
-├── default.conf             # ngnix configuration
-└── task-definition.json     # aws service task definition
+└── default.conf             # nginx configuration
 ```
 
 ## Local Development
@@ -81,43 +80,39 @@ docker build -t portfolio-website .
 docker run -p 8080:80 portfolio-website
 ```
 
-`http://localhost:8080`
+Visit `http://localhost:8080`
 
 ## Architecture Highlights
 
-- **Compute Layer:** ECS Fargate eliminates server management
-- **Network Layer:** Public subnet for direct internet access
-- **Security Layer:** Security group restricts traffic to HTTP/HTTPS
-- **DNS Layer:** Cloudflare proxy hides origin IP
-- **Storage Layer:** ECR stores Docker images with AES-256 encryption
+- **Compute Layer:** Cloud Run provides serverless container execution.
+- **Build Layer:** Cloud Build automatically builds containers on git push.
+- **Storage:** Artifact Registry securely stores container images.
+- **Network:** Google front-end load balancers handle incoming traffic.
+- **Security:** Immutable container images and managed SSL.
 
 ## Cost Optimization
 
-This setup is designed for minimal AWS costs:
+This setup is extremely cost-effective, leveraging Google Cloud's Free Usage limits:
 
-- Fargate spot pricing not available, but using smallest task size
-- Single task (no load balancer needed with Cloudflare)
-- No NAT Gateway (public subnet design)
-- ECR lifecycle policies for image management
+- **Cloud Run:** First 2 million requests/month are free.
+- **Cloud Build:** 120 build-minutes/day are free.
+- **Artifact Registry:** Minimal storage costs.
+- **Scale to Zero:** No costs when no one is visiting looking at the site.
 
-**Estimated Monthly Cost:** ~$15-20 USD
+**Estimated Monthly Cost:** < $1.00 USD
 
 ## Lessons Learned
 
-- Understanding VPC networking fundamentals (subnets, routing, internet gateways)
-- Container orchestration with ECS and task definitions
-- Integrating external DNS with AWS infrastructure
-- SSL/TLS termination strategies (Cloudflare vs AWS Certificate Manager)
-- Security group configuration for web traffic
-- Application Load Balancer useful for scaling
-- Implement Terraform for infrastructure as code in future projects
+- **Migration:** Transitioning from AWS ECS to Google Cloud Run for simplified operations.
+- **CI/CD:** Setting up trigger-based deployments limits manual errors.
+- **Serverless:** Understanding the "stateless" nature of containers for scaling.
+- **DNS/SSL:** Configuring custom usage domains with managed certificates.
 
 ## Future Improvements
 
-- [ ] Implement CI/CD with GitHub Actions
-- [ ] Add CloudWatch monitoring and alarms
-- [ ] Set up multi-AZ deployment for high availability
-
+- [ ] Implement advanced caching rules in Cloudflare.
+- [ ] Add uptime checks and alerting via Google Cloud Monitoring.
+- [ ] Optimize container image size further.
 
 ## Contact
 
@@ -126,4 +121,4 @@ This setup is designed for minimal AWS costs:
 
 ---
 
-> *Built with AWS, Docker, nginx, HTML, CSS, and JavaScript*
+> *Built with Google Cloud Platform, Docker, nginx, HTML, CSS, and JavaScript*
