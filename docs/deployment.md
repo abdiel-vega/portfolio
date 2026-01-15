@@ -7,7 +7,7 @@ Every push to the `main` branch on GitHub automatically triggers a build and dep
 
 ## Prerequisites
 
-- **Google Cloud Platform Account**: Project `portfolio-website-484321`.
+- **Google Cloud Platform Account**
 - **GitHub Repository**: Linked to Cloud Build trigger.
 - **Tools (Optional for manual tasks):**
   - `gcloud` CLI installed and authenticated.

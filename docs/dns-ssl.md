@@ -42,10 +42,9 @@ When mapping a custom domain in Cloud Run:
 - **Status:** Managed automatically.
 - **Redirect:** HTTP requests are automatically redirected to HTTPS.
 
-### Cloudflare SSL (If Proxied)
+### Cloudflare SSL (Proxied)
 
-If Cloudflare proxy is enabled:
-- **Mode:** **Full** (Strict recommended).
+- **Mode:** **Full**
   - Browser → Cloudflare: Encrypted (Cloudflare Cert).
   - Cloudflare → Google Cloud Run: Encrypted (Google Cert).
 - **Always Use HTTPS:** Enabled.
@@ -70,4 +69,3 @@ If the domain is not resolving:
 ### SSL Issues
 
 - **Certificate Provisioning:** Google managed certs can take up to 24 hours to issue initially.
-- **Redirect Loops:** Ensure Cloudflare SSL mode is **Full**, not "Flexible", if proxying to Cloud Run.

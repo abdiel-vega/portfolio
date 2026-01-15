@@ -15,7 +15,7 @@ The network topology is managed entirely by Google Cloud Platform's serverless i
 
 - **Protocol:** HTTP/HTTPS (HTTP/2 enabled)
 - **Port:** 8080 (Container listening port)
-- **Public Access:** Yes, enabled via "Allow unauthenticated invocations".
+- **Public Access:** Enabled via "Allow unauthenticated invocations".
 - **URL:** `https://portfolio-466431697349.us-west1.run.app`
 
 ### Outbound Traffic (Egress)
@@ -28,7 +28,7 @@ The network topology is managed entirely by Google Cloud Platform's serverless i
 ### Access Control
 
 - **Service Level:** Publicly accessible.
-- **IAM:** `Cloud Run Invoker` role granted to `allUsers`.
+- **IAM:** `Cloud Run Invoker` role granted to `admin`.
 
 ### Data Protection
 
