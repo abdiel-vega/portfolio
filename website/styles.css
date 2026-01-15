@@ -25,26 +25,31 @@ body {
 }
 
 canvas {
-  display: block;
-} /* ---- particles.js container ---- */
+    display: block;
+}
+
+/* ---- particles.js container ---- */
 #particles-js {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: var(--bg-primary);
-  background-image: url("");
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--bg-primary);
+    background-image: url("");
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
 }
 
 html {
     scroll-behavior: smooth;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     font-family: 'DM Serif Display', serif;
 }
 
@@ -198,14 +203,14 @@ nav a:hover {
         backdrop-filter: blur(10px);
         transition: all 0.3s ease;
         border: none;
-        visibility: hidden; 
-        opacity: 0; 
+        visibility: hidden;
+        opacity: 0;
     }
 
     nav.active {
         right: 0;
-        visibility: visible; 
-        opacity: 1; 
+        visibility: visible;
+        opacity: 1;
     }
 
     nav ul {
@@ -238,13 +243,13 @@ nav a:hover {
 
 /* Sections */
 section {
-    padding: 4rem 0; 
+    padding: 4rem 0;
     min-height: auto;
     border-top: 2px solid var(--section-break);
 }
 
 section:first-of-type {
-    border-top: none; 
+    border-top: none;
 }
 
 .description-em {
@@ -253,7 +258,7 @@ section:first-of-type {
 }
 
 #introduction {
-    padding-top: 10rem;  
+    padding-top: 10rem;
 }
 
 /* Profile Section */
@@ -392,6 +397,7 @@ section:first-of-type {
 .project-item {
     margin-bottom: 3rem;
 }
+
 .project-item:last-child {
     margin-bottom: 0;
 }
@@ -536,7 +542,7 @@ footer p:hover {
 }
 
 .footer-note {
-    display: flex; 
+    display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 0.85rem;
@@ -553,39 +559,13 @@ footer p:hover {
     color: var(--accent-hover);
 }
 
-/* Tooltip */
-.tooltip {
-    position: relative;
-    cursor: help;
-}
-
-.tooltip:before {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 5px 10px;
-    color: var(--description-em);
-    font-size: 0.8rem;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.tooltip:hover:before {
-    opacity: 1;
-    visibility: visible;
-    bottom: 120%;
-}
-
 /* Smooth animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -598,9 +578,10 @@ footer p:hover {
 .scroll-fade {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 1s cubic-bezier(.2,.9,.2,1), transform 1s cubic-bezier(.2,.9,.2,1);
+    transition: opacity 1s cubic-bezier(.2, .9, .2, 1), transform 1s cubic-bezier(.2, .9, .2, 1);
     will-change: opacity, transform;
-    pointer-events: auto; /* preserve interactions when visible */
+    pointer-events: auto;
+    /* preserve interactions when visible */
 }
 
 .scroll-fade.in {
@@ -642,12 +623,13 @@ footer p:hover {
     }
 
     #introduction {
-        padding-top: 8rem; 
+        padding-top: 8rem;
     }
 }
 
 /* Hide native scrollbars but preserve scrolling (wheel, touch, keyboard) */
-html, body {
+html,
+body {
     /* Firefox */
     scrollbar-width: none;
     /* IE 10+ */
@@ -664,8 +646,10 @@ body::-webkit-scrollbar {
 
 /* Ensure any scrollable element that you still want hidden can inherit this */
 *:not(textarea):not(input) {
-    -ms-overflow-style: none; /* IE 10+ */
+    -ms-overflow-style: none;
+    /* IE 10+ */
 }
+
 *:not(textarea):not(input)::-webkit-scrollbar {
     width: 0;
     height: 0;

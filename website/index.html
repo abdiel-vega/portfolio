@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>abdiel-vega</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div id="particles-js"></div>
-    
+
     <button class="menu-button" aria-label="Toggle menu">
         <span class="menu-icon"></span>
     </button>
@@ -31,10 +35,15 @@
         <section id="introduction">
             <h1 class="name">Abdiel Vega</h1>
             <p class="tagline">cs student • developer • cloud engineer</p>
-            
+
             <div class="about">
-                <p>Hello! I'm a third-year Computer Science student at Inter-American University of Puerto Rico, transitioning into cloud engineering with a focus on AWS and containerization.</p>
-                <p>Currently building projects using AWS and Docker while learning along the way.</p>
+                <p>Like my site? I'm a Junior Computer Science student at Inter-American University of Puerto Rico with
+                    a focus on cybersecurity. <br>I also develop websites when motivation strikes, and like building new
+                    python tools.</p>
+                <p>Currently learning web security and vulnerability research. I recently participated in the U.S.
+                    Department of State's Vulnerability Disclosure Program (VDP), where I identified a High-Severity
+                    (CVSS 8.1) Broken Access Control issue that exposed PII for over 5,000 individuals. Quite the
+                    motivation boost, so I'll continue doing this for now but always open for any opportunity.</p>
                 <em class="side-message">thx for visiting :)</em>
             </div>
 
@@ -59,8 +68,57 @@
             <h2 class="section-title">Projects</h2>
 
             <div class="project-item">
+                <h3 class="project-title">Vulnerability Disclosure Program (VDP) – U.S. Department of State</h3>
+                <p class="project-description"><em class="description-em">Identified Broken Access Control (IDOR)
+                        on a Microsoft Dynamics 365 Web API endpoint.
+                        <br>Status: Retesting – High Severity (CVSS 8.1)</em>
+                </p>
+                <p class="project-description">Discovered exposure of Personally Identifiable Information (PII) for
+                    5,000+ individuals, including names, emails, and 3,900+ plaintext passwords. Demonstrated impact
+                    regarding account takeover risks and mass data harvesting through reproduction steps and
+                    documentation.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Burp Suite</span>
+                    <span class="tech-tag">Kali Linux</span>
+                    <span class="tech-tag">OWASP ZAP</span>
+                    <span class="tech-tag">REST API</span>
+                    <span class="tech-tag">IDOR</span>
+                </div>
+                <div class="project-links">
+                    <a href="/website/assets/dos-vdp-report-censored-write-up.pdf" target="_blank"
+                        class="project-link">→
+                        Write-up</a>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <h3 class="project-title">Portfolio Website</h3>
+                <p class="project-description"><em class="description-em">You're looking at it!</em> This is my
+                    portfolio website originally hosted on AWS using containerization with Docker.</p>
+                <p class="project-description">I migrated the infrastructure from AWS ECS to Google Cloud Run to
+                    leverage a fully serverless, scale-to-zero architecture. The project features a robust CI/CD
+                    pipeline using Google Cloud Build, ensuring every code commit is automatically built, tested, and
+                    deployed to production within minutes.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">AWS</span>
+                    <span class="tech-tag">GCP</span>
+                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/abdiel-vega/portfolio" target="_blank" class="project-link">→
+                        Documentation</a>
+                </div>
+            </div>
+
+            <div class="project-item">
                 <h3 class="project-title">iCooked - Food Recipe Website</h3>
-                <p class="project-description"><em class="description-em">Complete food recipe web application</em> leveraging from the Spoonacular API. It features secure user authentication, database integration for recipe storage, recipe search and filtering, shopping list generator, and interactive recipe viewing.</p>
+                <p class="project-description"><em class="description-em">Complete food recipe web application</em>
+                    leveraging from the Spoonacular API. It features secure user authentication, database integration
+                    for recipe storage, recipe search and filtering, shopping list generator, and interactive recipe
+                    viewing.</p>
                 <div class="project-tech">
                     <span class="tech-tag">HTML</span>
                     <span class="tech-tag">CSS</span>
@@ -76,30 +134,29 @@
                 </div>
             </div>
 
-            <div class="project-item">
-                <h3 class="project-title">Portfolio Website</h3>
-                <p class="project-description"><em class="description-em">You're looking at it!</em> This is my portfolio website hosted on AWS using containerization with Docker. Demonstrating cloud infrastructure deployment, container orchestration, and web development basic skills.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">AWS</span>
-                    <span class="tech-tag">Docker</span>
-                    <span class="tech-tag">HTML</span>
-                    <span class="tech-tag">CSS</span>
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">Linux</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/abdiel-vega/portfolio" target="_blank" class="project-link">→ Documentation</a>
-                </div>
-            </div>
-
         </section>
 
         <!-- Experience Section -->
         <section id="experience">
             <h2 class="section-title">Experience</h2>
 
-            <em class="description-em">Unfortunately I currently don't have any tech related job experience, yet!</em>
-            
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div>
+                        <h3>HackerOne</h3>
+                        <p class="exp-role">Security Researcher</p>
+                    </div>
+                    <div class="exp-meta">
+                        <p class="exp-location">Remote</p>
+                        <p class="exp-date">Dec 2025 - Present</p>
+                    </div>
+                </div>
+                <p class="exp-description">Conducting security analysis and vulnerability research for global
+                    organizations via crowdsourced security platforms like HackerOne, Bugcrowd, and Intigriti.
+                    Identifying and responsibly disclosing security flaws to help companies harden their attack surface
+                    and protect user data.</p>
+            </div>
+
             <div class="experience-item">
                 <div class="exp-header">
                     <div>
@@ -111,36 +168,29 @@
                         <p class="exp-date">January 2025 - Present</p>
                     </div>
                 </div>
-                <p class="exp-description">Manage mobile coffee bar operations independently on various mall popups and private events.</p>
+                <p class="exp-description">Manage mobile coffee bar operations independently on various mall popups and
+                    private events.</p>
             </div>
+
             <div class="experience-item">
                 <div class="exp-header">
                     <div>
-                        <h3>Performa - HCOA Fitness</h3>
-                        <p class="exp-role">Sales Staff</p>
+                        <h3>Best Buy</h3>
+                        <p class="exp-role">Sales Associate</p>
                     </div>
                     <div class="exp-meta">
                         <p class="exp-location">San Juan, Puerto Rico</p>
-                        <p class="exp-date">May 2024 - Oct 2024</p>
+                        <p class="exp-date">Nov 2025 - Jan 2026</p>
                     </div>
                 </div>
-                <p class="exp-description">Membership sales position at a top tier wellness center. Common day included client assessment, cold outreach, managing and updating CRM system, and gym maintenance.</p>
-            </div>
-            <div class="experience-item">
-                <div class="exp-header">
-                    <div>
-                        <h3>Starbucks</h3>
-                        <p class="exp-role">Barista</p>
-                    </div>
-                    <div class="exp-meta">
-                        <p class="exp-location">Guaynabo, Puerto Rico</p>
-                        <p class="exp-date">Jul 2023 - Dec 2023</p>
-                    </div>
-                </div>
-                <p class="exp-description">Average retail environment in a high volume Starbucks location. Common day included customer service, beverage preparation, and store maintenance.</p>
+                <p class="exp-description">Delivered high-energy customer service and technical expertise during the
+                    peak holiday season. Focused on identifying customer needs, explaining complex technology in simple
+                    terms,and driving sales through personalized selling.</p>
             </div>
 
-            <p class="section-note"><em class="description-em">If you're hiring!</em> Currently seeking opportunities in cloud related entry level or internship roles. You know where my <a class="more-link" href="#introduction">contacts</a> are ;)</p>
+            <p class="section-note"><em class="description-em">If you're looking to connect!</em> Would be glad to
+                participate in any role. You know where my <a class="more-link" href="#introduction">contacts</a> are.
+            </p>
         </section>
 
         <!-- Skills Section -->
@@ -148,22 +198,29 @@
             <h2 class="section-title">Skills</h2>
 
             <div class="skills-group">
-                <p class="skill-category">Amazon Web Services</p>
-                <span class="tech-tag">EC2</span>
-                <span class="tech-tag">ECR</span>
-                <span class="tech-tag">S3</span>
-                <span class="tech-tag">VPC</span>
-                <span class="tech-tag">IAM</span>
-                <span class="tech-tag">Lambda</span>
+                <p class="skill-category">Cybersecurity</p>
+                <span class="tech-tag">Burp Suite</span>
+                <span class="tech-tag">Kali Linux</span>
+                <span class="tech-tag">OWASP ZAP</span>
+                <span class="tech-tag">Vulnerability Research</span>
             </div>
-            
+
+            <div class="skills-group">
+                <p class="skill-category">Cloud & Infrastructure</p>
+                <span class="tech-tag">Google Cloud Platform</span>
+                <span class="tech-tag">Amazon Web Services</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">Nginx</span>
+            </div>
+
             <div class="skills-group">
                 <p class="skill-category">Languages</p>
-                <span class="tech-tag">HTML</span>
-                <span class="tech-tag">CSS</span>
+                <span class="tech-tag">Python</span>
                 <span class="tech-tag">JavaScript</span>
                 <span class="tech-tag">TypeScript</span>
-                <span class="tech-tag">Python</span>
+                <span class="tech-tag">SQL</span>
+                <span class="tech-tag">Bash/Shell</span>
+                <span class="tech-tag">HTML & CSS</span>
             </div>
 
             <div class="skills-group">
@@ -172,32 +229,23 @@
                 <span class="tech-tag">Next.js</span>
                 <span class="tech-tag">TailwindCSS</span>
                 <span class="tech-tag">Supabase</span>
-                <span class="tech-tag">PostgreSQL</span>
-                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">API</span>
             </div>
 
             <div class="skills-group">
-                <p class="skill-category">Tools</p>
+                <p class="skill-category">Other Tools</p>
                 <span class="tech-tag">Git</span>
-                <span class="tech-tag">VS Code</span>
-                <span class="tech-tag">Linux</span>
-                <span class="tech-tag">VirtualBox</span>
-                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">Antigravity</span>
                 <span class="tech-tag">Obsidian</span>
-            </div>
-
-            <div class="skills-group">
-                <p class="skill-category">Knowledge Foundation</p>
-                <span class="tech-tag">Network Fundamentals</span>
-                <span class="tech-tag">Network Cloud Fundamentals</span>
-                <span class="tech-tag">Security Best Practices</span>
+                <span class="tech-tag">VirtualBox</span>
+                <span class="tech-tag">Postman</span>
             </div>
         </section>
 
         <!-- Education Section -->
         <section id="education">
             <h2 class="section-title">Education</h2>
-            
+
             <div class="education-item">
                 <h3>Bachelor's Degree in Computer Science</h3>
                 <p>Inter-American University of Puerto Rico | Metro Campus</p>
@@ -208,15 +256,22 @@
 
             <div class="cert-list">
                 <div class="cert-item">
-                    <p class="cert-name">AWS Certified Cloud Practitioner</p>
-                    <p class="cert-status">In Progress - Expected November 2025</p>
-                </div>
-                <div class="cert-item">
-                    <p class="cert-name">AWS Certified Solutions Architect - Associate</p>
-                    <p class="cert-status">Planned - After Cloud Practitioner</p>
-                </div>
-                <div class="cert-item">
                     <p class="cert-name">CompTIA Security+</p>
+                    <p class="cert-status">Planned</p>
+                </div>
+
+                <div class="cert-item">
+                    <p class="cert-name">Burp Suite Certified Practitioner (BSCP)</p>
+                    <p class="cert-status">Planned</p>
+                </div>
+
+                <div class="cert-item">
+                    <p class="cert-name">Practical Web Pentest Associate (PWPA)</p>
+                    <p class="cert-status">Planned</p>
+                </div>
+
+                <div class="cert-item">
+                    <p class="cert-name">HTB Certified Web Exploitation Specialist (HTB CWES)</p>
                     <p class="cert-status">Planned</p>
                 </div>
             </div>
@@ -224,8 +279,8 @@
 
         <footer>
             <div class="footer-note">
-                <p class="tooltip" data-tooltip="jk">©2025 notaquacc</p>
-                <p>v1.0 - Nov 4, 2025</p>
+                <p>@notaquacc</p>
+                <p>v1.1 - Jan, 15 2026</p>
             </div>
         </footer>
     </div>
@@ -234,4 +289,5 @@
     <script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>

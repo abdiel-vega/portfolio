@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Initialize particles.js
     particlesJS('particles-js', {
         particles: {
@@ -167,11 +167,11 @@ window.addEventListener('scroll', () => {
 
     sections.forEach(section => {
         const rect = section.getBoundingClientRect();
-        
+
         // Calculate how much of the section is visible
         const visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
         const visibilityPercentage = (visibleHeight / windowHeight) * 100;
-        
+
         if (visibilityPercentage > maxVisibility) {
             maxVisibility = visibilityPercentage;
             mostVisibleSection = section.getAttribute('id');
@@ -188,8 +188,8 @@ window.addEventListener('scroll', () => {
 
 // Console easter egg
 console.log('%chello! inspecting my site?', 'font-size: 20px; font-weight: bold; color: #FC9173;');
-console.log('%cbuilt with html, css, javascript\nhosted on aws with docker and nginx', 'font-size: 14px; color: #E0DDCF;');
-console.log('%calso looking for professional doomscroller jobs\njk', 'font-size: 12px; color: #8B8680;');
+console.log('%cpls dont steal my cookies', 'font-size: 14px; color: #E0DDCF;');
+console.log('%c🍪🍪🍪', 'font-size: 12px; color: #8B8680;');
 
 // Mobile menu functionality
 const menuButton = document.querySelector('.menu-button');
@@ -198,7 +198,7 @@ const nav = document.querySelector('nav');
 menuButton.addEventListener('click', () => {
     menuButton.classList.toggle('active');
     nav.classList.toggle('active');
-    
+
     // Prevent body scroll when menu is open
     document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
 });
