@@ -220,3 +220,26 @@ document.addEventListener('click', (e) => {
         document.body.style.overflow = '';
     }
 });
+
+// Project preview toggle (GIF lazy-load + smooth reveal)
+document.querySelectorAll('.preview-toggle').forEach(toggle => {
+    toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('data-target');
+        const preview = document.getElementById(targetId);
+        if (!preview) return;
+
+        const isOpen = preview.classList.toggle('open');
+        this.classList.toggle('active', isOpen);
+        this.setAttribute('aria-expanded', isOpen);
+
+        // Lazy-load the GIF src on first open
+        const img = preview.querySelector('.project-preview-img');
+        if (isOpen && img && !img.src) {
+            img.src = 'assets/spotify-cli_preview.gif';
+        }
+
+        // Update link text
+        this.textContent = isOpen ? '→ Hide Preview' : '→ GIF Preview';
+    });
+});

@@ -34,16 +34,17 @@
         <!-- Profile Section -->
         <section id="introduction">
             <h1 class="name">Abdiel Vega</h1>
-            <p class="tagline">cs student • developer • cloud engineer</p>
+            <p class="tagline">cs student • software/cloud developer • bbp researcher</p>
 
             <div class="about">
-                <p>Like my site? I'm a Junior Computer Science student at Inter-American University of Puerto Rico with
-                    a focus on cybersecurity. <br>I also develop websites when motivation strikes, and like building new
-                    python tools.</p>
-                <p>Currently learning web security and vulnerability research. I recently participated in the U.S.
-                    Department of State's Vulnerability Disclosure Program (VDP), where I identified a High-Severity
-                    (CVSS 8.1) Broken Access Control issue that exposed PII for over 5,000 individuals. Quite the
-                    motivation boost, so I'll continue doing this for now but always open for any opportunity.</p>
+                <p>Like my portfolio? I'm a Junior Computer Science student at Inter-American University of Puerto Rico
+                    with a focus on software engineering, cloud computing and cybersecurity. <br>
+                    I also develop websites when motivation strikes, and like building new python tools.</p>
+                <p>Currently focusing on Python development and cybersecurity. <br>
+                    My latest finding while doing a VDP for the U.S. Department of State was a High-Severity (CVSS 8.1)
+                    Broken Access Control issue that exposed PII for over 5,000 individuals. <br>
+                    I also recently built a Spotify CLI tool that allows users to control their Spotify playback from
+                    the terminal using Python.</p>
                 <em class="side-message">thx for visiting :)</em>
             </div>
 
@@ -72,10 +73,44 @@
             <h2 class="section-title">Projects</h2>
 
             <div class="project-item">
-                <h3 class="project-title">Vulnerability Disclosure Program (VDP) – U.S. Department of State</h3>
-                <p class="project-description"><em class="description-em">Identified Broken Access Control (IDOR)
-                        on a Microsoft Dynamics 365 Web API endpoint.
-                        <br>Status: Retesting – High Severity (CVSS 8.1)</em>
+                <h3 class="project-title">Spotify CLI</h3>
+                <p class="project-description"><em class="description-em">Spotify live playback controller from the
+                        terminal with album art.</em>
+                </p>
+                <p class="project-description">A full-featured Python-based command-line interface that lets you control
+                    Spotify playback, search the catalog, and view the current playing song's album art all without
+                    leaving your terminal. It connects to your Spotify account via the Web API and renders a live,
+                    auto-refreshing dashboard with full-color ASCII album art, real-time track progress, and
+                    single-keypress controls.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Spotify Web API</span>
+                    <span class="tech-tag">Rich</span>
+                    <span class="tech-tag">Spotipy</span>
+                    <span class="tech-tag">Click</span>
+                    <span class="tech-tag">Pillow</span>
+                    <span class="tech-tag">Requests</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/abdiel-vega/spotify-cli" target="_blank" class="project-link">→
+                        GitHub</a>
+                    <a href="#" class="project-link preview-toggle" data-target="spotify-cli-preview"
+                        aria-expanded="false">→
+                        GIF Preview</a>
+                </div>
+                <div class="project-preview" id="spotify-cli-preview">
+                    <div class="project-preview-inner">
+                        <img alt="Spotify CLI preview showing terminal playback interface" class="project-preview-img">
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <h3 class="project-title">HackerOne VDP – U.S. Department of State</h3>
+                <p class="project-description"><em class="description-em">Broken Access Control on Microsoft Dynamics
+                        365 Web API endpoint.
+                        <br>Status: Resolved – High Severity (CVSS 8.1)</em>
                 </p>
                 <p class="project-description">Discovered exposure of Personally Identifiable Information (PII) for
                     5,000+ individuals, including names, emails, and 3,900+ plaintext passwords. Demonstrated impact
@@ -112,7 +147,7 @@
                 </div>
                 <div class="project-links">
                     <a href="https://github.com/abdiel-vega/portfolio" target="_blank" class="project-link">→
-                        Documentation</a>
+                        GitHub</a>
                 </div>
             </div>
 
@@ -155,24 +190,9 @@
                     </div>
                 </div>
                 <p class="exp-description">Conducting security analysis and vulnerability research for global
-                    organizations via crowdsourced security platforms like HackerOne, Bugcrowd, and Intigriti.
+                    organizations via crowdsourced security platforms like HackerOne and Bugcrowd.
                     Identifying and responsibly disclosing security flaws to help companies harden their attack surface
                     and protect user data.</p>
-            </div>
-
-            <div class="experience-item">
-                <div class="exp-header">
-                    <div>
-                        <h3>Aroma Coffee Bar</h3>
-                        <p class="exp-role">Solo Barista</p>
-                    </div>
-                    <div class="exp-meta">
-                        <p class="exp-location">Puerto Rico</p>
-                        <p class="exp-date">January 2025 - Present</p>
-                    </div>
-                </div>
-                <p class="exp-description">Manage mobile coffee bar operations independently on various mall popups and
-                    private events.</p>
             </div>
 
             <div class="experience-item">
@@ -201,11 +221,21 @@
             <h2 class="section-title">Skills</h2>
 
             <div class="skills-group">
+                <p class="skill-category">Programming Languages</p>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">SQL</span>
+                <span class="tech-tag">Bash/Shell</span>
+                <span class="tech-tag">HTML & CSS</span>
+            </div>
+
+            <div class="skills-group">
                 <p class="skill-category">Cybersecurity</p>
                 <span class="tech-tag">Burp Suite</span>
                 <span class="tech-tag">Kali Linux</span>
                 <span class="tech-tag">OWASP ZAP</span>
-                <span class="tech-tag">Vulnerability Research</span>
+                <span class="tech-tag">Web Security Research</span>
             </div>
 
             <div class="skills-group">
@@ -214,16 +244,7 @@
                 <span class="tech-tag">Amazon Web Services</span>
                 <span class="tech-tag">Docker</span>
                 <span class="tech-tag">Nginx</span>
-            </div>
-
-            <div class="skills-group">
-                <p class="skill-category">Languages</p>
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">TypeScript</span>
-                <span class="tech-tag">SQL</span>
-                <span class="tech-tag">Bash/Shell</span>
-                <span class="tech-tag">HTML & CSS</span>
+                <span class="tech-tag">Cloudflare</span>
             </div>
 
             <div class="skills-group">
@@ -241,7 +262,6 @@
                 <span class="tech-tag">Antigravity</span>
                 <span class="tech-tag">Obsidian</span>
                 <span class="tech-tag">VirtualBox</span>
-                <span class="tech-tag">Postman</span>
             </div>
         </section>
 
@@ -263,27 +283,13 @@
                     <p class="cert-status">Planned</p>
                 </div>
 
-                <div class="cert-item">
-                    <p class="cert-name">Burp Suite Certified Practitioner (BSCP)</p>
-                    <p class="cert-status">Planned</p>
-                </div>
-
-                <div class="cert-item">
-                    <p class="cert-name">Practical Web Pentest Associate (PWPA)</p>
-                    <p class="cert-status">Planned</p>
-                </div>
-
-                <div class="cert-item">
-                    <p class="cert-name">HTB Certified Web Exploitation Specialist (HTB CWES)</p>
-                    <p class="cert-status">Planned</p>
-                </div>
             </div>
         </section>
 
         <footer>
             <div class="footer-note">
                 <p>@notaquacc</p>
-                <p>v1.1 - Jan, 15 2026</p>
+                <p>v1.2 - Mar, 12 2026</p>
             </div>
         </footer>
     </div>
